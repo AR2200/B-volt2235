@@ -1,10 +1,18 @@
 const express = require('express');
+const res = require('express/lib/response');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', function (req, res) {
- res.send('Hello World!');
+app.use(express.json());
+
+app.get('/api/get', function (req, res) {
+    res.json('Hello World!');
 });
+
+app.post('/api/post', function (req, res) {
+    console.log(req.body);
+    res.json({test:'Hello World!'});
+})
 
 //app.listen(3000, function () {
 //});
