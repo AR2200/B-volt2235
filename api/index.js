@@ -1,23 +1,21 @@
-const express = require('express');
-const res = require('express/lib/response');
+const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(express.json());
+const PORT = process.env.PORT || 3000; //Heroku用
+const bodyParser = require("body-parser");
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
-    res.send("Hello World(*'▽')");
-  });
-  
-app.get('/api/get', function (req, res) {
-    res.json('Hello World!');
+  res.send("Hello World(*'▽')");
 });
-
-app.post('/api/post', function (req, res) {
-    console.log(req.body);
-    res.json({test:'Hello World!'});
-})
-
-//app.listen(3000, function () {
-//});
-
-(process.env.NOW_REGION) ? module.exports = app : app.listen(PORT); // Heroku用
+app.get("/api/get/", (req, res) => {
+  res.json({ message: "こちらはルートパスです(V)o￥o(V)" });
+});
+app.use(bodyParser.json());
+app.post("/api/post", (req, res) => {
+  console.log(req.body);
+  res.send("POSTされたデータを取得できました");
+});
+//ローカル用サーバ
+app.listen(3000, () => {
+  console.log("Application started");
+});
+process.env.NOW_REGION ? (module.express = app) : app.listen(PORT); //Heroku用
