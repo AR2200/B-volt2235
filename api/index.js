@@ -9,10 +9,12 @@ app.get("/", (req, res) => {
 app.get("/api/get/", (req, res) => {
   res.json({ message: "こちらはルートパスです(V)o￥o(V)" });
 });
-app.use(bodyParser.json());
-app.post("/api/post", (req, res) => {
-  console.log(req.body);
-  res.send("POSTされたデータを取得できました");
+app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+app.post('/', function(req, res) {
+  const data = req.body;
+  console.log('req.body', data);
+  res.send('api: OK');
 });
 //ローカル用サーバ
 app.listen(3000, () => {
