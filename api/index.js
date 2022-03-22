@@ -14,6 +14,8 @@ app.use(express.urlencoded({extended: true}));
 app.post('/', function(req, res) {
   const data = req.body;
   console.log('req.body', data);
+  const messageId = data["events"][0]["message"]["id"];
+  console.log(messageId);
   res.send('api: OK');
 });
 //ローカル用サーバ
