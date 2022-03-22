@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
   res.send("Hello World(*'▽')");
 });
 app.get("/api/get/", (req, res) => {
-  res.json({ message: "こちらはルートパスです(V)o￥o(V)" });
+  res.json({ message: "こちらはルートパスです(V)o￥o(V)." });
 });
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
