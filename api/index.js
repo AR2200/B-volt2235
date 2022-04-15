@@ -32,9 +32,7 @@ app.post('/', function(req, res) {
   });
 });
 //ローカル用サーバ
-app.listen(3000, () => {
-  console.log("Application started");
-});
+
 process.env.NOW_REGION ? (module.express = app) : app.listen(PORT); //Heroku用
 
 /* const request = require('request');
